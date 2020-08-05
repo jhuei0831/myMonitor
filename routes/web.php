@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Events\OrderMonitor;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/monitor', function () {
+    event(new OrderMonitor('hello world'));
+    return view('monitor');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
