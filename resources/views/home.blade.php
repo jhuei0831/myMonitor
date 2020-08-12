@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <form action="{{ route('fire') }}" method="post">
+                        @csrf
+                        <label for="fire">輸入要廣播的內容</label>
+                        <input class="form-control" type="text" name="fire">
+                    </form>
                 </div>
             </div>
         </div>

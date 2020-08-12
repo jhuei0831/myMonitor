@@ -2,6 +2,7 @@
 <head>
     <title>Pusher Test</title>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
 
         // Enable pusher logging - don't include this in production
@@ -13,7 +14,7 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
+            Swal.fire(JSON.stringify(data));
         });
     </script>
 </head>
