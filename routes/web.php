@@ -18,11 +18,10 @@ Route::get('/', function () {
 });
 
 Route::get('/monitor', function () {
-    // event(new OrderMonitor('hello world'));
     return view('monitor');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/fire', 'MonitorController@fire')->name('fire');
+Route::post('/notifications', 'MonitorController@notifications')->name('notifications');

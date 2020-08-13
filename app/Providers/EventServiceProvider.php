@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OrderMonitor' => [
             'App\Listeners\SendMonitorNotification',
         ],
+        'App\Events\OrderNotification' => [
+            'App\Listeners\SendNoticeNotification',
+        ],
     ];
 
     /**

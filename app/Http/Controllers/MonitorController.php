@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Events\OrderMonitor;
+use App\Events\OrderNotification;
 
 class MonitorController extends Controller
 {
@@ -12,9 +12,9 @@ class MonitorController extends Controller
         $this->middleware('auth');
     }
 
-    public function fire(Request $request)
+    public function notifications(Request $request)
     {
-        event(new OrderMonitor($request->fire));
-        return back();
+        event(new OrderNotification($request->fire));
+        return back()->with('success', '廣播成功');
     }
 }
