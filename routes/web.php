@@ -23,5 +23,6 @@ Route::get('/monitor', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/notifications/index', 'NotificationController@index')->name('notifications.index');
 
-Route::post('/notifications', 'MonitorController@notifications')->name('notifications');
+Route::post('/notifications/post', 'NotificationController@notifications')->name('notifications.post');
