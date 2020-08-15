@@ -55857,7 +55857,7 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "201e16222cc2044f34c0",
-  cluster: "ap3",
+  cluster: "mt1",
   forceTLS: true
 });
 laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"].channel('my-channel').listen('OrderMonitor', function (e) {
@@ -55953,8 +55953,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\kerwin\code\myMonitor\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\kerwin\code\myMonitor\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\myMonitor\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\myMonitor\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

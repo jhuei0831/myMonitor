@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+# Event
 use App\Events\OrderNotification;
+
+# Service
 use App\Services\LogService;
 
 class NotificationController extends Controller
@@ -23,8 +27,14 @@ class NotificationController extends Controller
 
     public function notifications(Request $request)
     {
-        event(new OrderNotification($request->fire));
-        $this->log->write_log('notification', $request->fire, 'post');
+        $title = $request->title;
+        $icon = $request->icon;
+        $message = $request->message;
+        $footer = $request->footer;
+        $data = ['title' => $title, 'icon' => $icon, 'message' => $message, 'footer' => $footer];
+
+        event(new OrderNotification($title, $icon, $message, $footer));
+        $this->log->write_log('notification', $data, 'post');
         return back()->with('success', '廣播成功');
     }
 }

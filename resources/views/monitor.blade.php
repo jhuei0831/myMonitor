@@ -14,7 +14,13 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-            Swal.fire(JSON.stringify(data));
+            Swal.fire({
+                icon: data['icon'],
+                title: data['title'],
+                text: data['message'],
+                footer: data['footer'],
+                timer: 5000,
+            })
         });
     </script>
 </head>

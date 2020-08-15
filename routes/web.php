@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Events\OrderMonitor;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +22,7 @@ Route::get('/monitor', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/notifications/index', 'NotificationController@index')->name('notifications.index');
 
+// Notification
+Route::get('/notifications/index', 'NotificationController@index')->name('notifications.index');
 Route::post('/notifications/post', 'NotificationController@notifications')->name('notifications.post');
