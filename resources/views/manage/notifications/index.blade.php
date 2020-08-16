@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn normal border active">廣播</button>
-        <button type="button" class="btn quick border">快速廣播</button>
+    <div class="btn-group" role="group" aria-label="Basic example" id="toggle">
+        <a type="button" class="btn normal border btn-success text-light active noHover">廣播</a>
+        <a type="button" class="btn quick border noHover">快速廣播</a>
     </div><hr>
-    <div class="row justify-content-center" id="normal">
+    <div class="row justify-content-center" id="boradcast_normal">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-primary text-light">廣播</div>
+                <div class="card-header bg-primary text-light"><i class="fas fa-broadcast-tower"></i>&nbsp;廣播</div>
 
                 <div class="card-body">
                     <form action="{{ route('notifications.post') }}" method="post">
@@ -23,12 +23,10 @@
                             <option>success</option>
                             <option>info</option>
                         </select>
-                        {{-- <input class="form-control" type="text" name="icon"> --}}
                         <label for="message">內容</label>
                         <input class="form-control" type="text" name="message">
                         <label for="footer">Footer</label>
-                        <input class="form-control" type="text" name="footer">
-                    
+                        <input class="form-control" type="text" name="footer">             
                 </div>
                 <div class="card-footer text-center">
                     <input type="submit" class="btn btn-success">
@@ -37,10 +35,10 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center" id="quick">
+    <div class="row justify-content-center" id="boradcast_quick" hidden>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-warning text-gray-dark">快速廣播</div>
+                <div class="card-header bg-primary text-light"><i class="fas fa-broadcast-tower"></i>&nbsp;快速廣播</div>
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -72,13 +70,25 @@
 @endsection
 @section('js')
     <script>
-        $(".normal").click(function() {
-            $(this).toggleClass("btn-dark");
-            $(this).toggleClass("text-light");
-        });
-        $(".quick").click(function() {
-            $(this).toggleClass("btn-dark");
-            $(this).toggleClass("text-light");
+        $("#toggle").click(function() {
+            $(".normal").toggleClass("btn-success");
+            $(".normal").toggleClass("text-light");
+            $(".normal").toggleClass("active");
+            $(".quick").toggleClass("btn-success");
+            $(".quick").toggleClass("text-light");
+            $(".quick").toggleClass("active");
+            if ($(".normal").hasClass('active')) {
+                $("#boradcast_normal").removeAttr("hidden"); 
+            }
+            else{
+                $("#boradcast_normal").attr("hidden", "hidden");
+            } 
+            if ($(".quick").hasClass('active')) {
+                $("#boradcast_quick").removeAttr("hidden"); 
+            }
+            else{
+                $("#boradcast_quick").attr("hidden", "hidden");
+            }    
         });
     </script>
 @endsection
