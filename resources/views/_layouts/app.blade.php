@@ -10,5 +10,6 @@
             </main>
         </div>
     </body>
+    @include('_partials.footer')
     @yield('js')
 </html>

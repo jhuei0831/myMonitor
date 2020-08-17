@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dabd59f33ff371384c5d1ec47648fbca",
+    "content-hash": "c449e8b97a1f2c23e90201ffb1404acf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1875,12 +1875,12 @@
             "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nrk/predis.git",
+                "url": "https://github.com/predis/predis.git",
                 "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "url": "https://api.github.com/repos/predis/predis/zipball/f0210e38881631afeafb56ab43405a92cafd9fd1",
                 "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
                 "shasum": ""
             },
@@ -5044,6 +5044,71 @@
                 "php"
             ],
             "time": "2020-07-22T23:32:04+00:00"
+        },
+        {
+            "name": "yish/generators",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mombuyish/Laravel-Oh-Generators.git",
+                "reference": "3b6577b4c2b18722827b6a2575f1fe8c4d9ce422"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mombuyish/Laravel-Oh-Generators/zipball/3b6577b4c2b18722827b6a2575f1fe8c4d9ce422",
+                "reference": "3b6577b4c2b18722827b6a2575f1fe8c4d9ce422",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.*|^6.0|^7.0",
+                "illuminate/filesystem": "5.*|^6.0|^7.0",
+                "illuminate/support": "5.*|^6.0|^7.0",
+                "php": ">=7"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/database": "^3.5",
+                "orchestra/testbench": "^3.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yish\\Generators\\GeneratorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yish\\Generators\\": "src/"
+                },
+                "files": [
+                    "src/Foundation/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yish",
+                    "email": "mombuartworks@gmail.com"
+                }
+            ],
+            "description": "This package extends the core file generators that are included with Laravel 5",
+            "homepage": "https://github.com/Mombuyish/Laravel-Oh-Generators",
+            "keywords": [
+                "generator",
+                "laravel",
+                "patterns"
+            ],
+            "time": "2020-04-09T11:03:58+00:00"
         }
     ],
     "packages-dev": [
