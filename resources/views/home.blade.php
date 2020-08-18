@@ -14,7 +14,6 @@
                         <label for="fire">輸入要廣播的內容</label>
                         <input class="form-control" type="text" name="fire">
                     </form>
-                    {!! $button->Reset() !!}
                 </div>
             </div>
         </div>

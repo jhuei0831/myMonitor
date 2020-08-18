@@ -11,22 +11,22 @@ class ButtonPresenter
     {
         $url = URL::full();
         echo "<button type=\"submit\" class='btn btn-sm btn-secondary'>";
-        echo 	"<i class='fas fa-info-circle'></i>&nbsp;".trans('action.detail');
+        echo 	"<i class='fas fa-info-circle'></i>&nbsp;詳細資料";
         echo "</a>";
     }
 
     public static function Deleting($id)
     {
         // $url = URL::full();
-        echo "<button type='submit' class='btn btn-sm btn-danger btn-delete dropdown-item'>";
-        echo 	"<i class='fas fa-trash-alt'></i>&nbsp;".trans('action.delete');
+        echo "<button type='submit' class='btn btn-sm btn-danger btn-delete'>";
+        echo 	"<i class='fas fa-trash-alt'></i>&nbsp;刪除";
         echo "</button>";
     }
 
     public static function Edit($id)
     {
-        echo "<button type=\"submit\" class='btn btn-sm btn-success dropdown-item' formtarget='_blank'>";
-        echo "<i class='fas fa-pencil-alt'></i>&nbsp;" . trans('action.edit');
+        echo "<button type=\"submit\" class='btn btn-sm btn-success' formtarget='_blank'>";
+        echo "<i class='fas fa-pencil-alt'></i>&nbsp;編輯";
         echo "</button>";
     }
 
@@ -34,7 +34,7 @@ class ButtonPresenter
     {
         $url = URL::full();
         echo "<a class='btn btn-sm btn-primary' href='{$url}/create'>";
-        echo 	"<i class='fas fa-plus'></i>&nbsp;".trans('action.create');
+        echo 	"<i class='fas fa-plus'></i>&nbsp;新增";
         echo "</a>";
     }
 
@@ -42,7 +42,7 @@ class ButtonPresenter
     {
         $url = URL::full();
         echo "<a class='btn btn-sm btn-primary' href='{$url}/import'>";
-        echo    "<i class='fas fa-file-import'></i>&nbsp;".trans('action.import.import');
+        echo    "<i class='fas fa-file-import'></i>&nbsp;匯入";
         echo "</a>";
     }
 
@@ -50,7 +50,7 @@ class ButtonPresenter
     {
         echo "<p class='text-right'>";
         echo	"<a class='btn btn-sm btn-reset btn-danger' href='reset.php'>";
-        echo		"<i class='fas fa-undo-alt'></i>&nbsp;".trans('action.reset');
+        echo		"<i class='fas fa-undo-alt'></i>&nbsp;重置";
         echo 	"</a>";
         echo "</p>";
     }
@@ -77,7 +77,7 @@ class ButtonPresenter
         $target_url = ($url) ? $url: URL::previous();
 
         echo "<a class='btn btn-sm btn-warning' href='{$target_url}'>";
-        echo 	"<i class='fas fa-arrow-left'></i> ".trans('action.previous');
+        echo 	"<i class='fas fa-arrow-left'></i> 回到列表";
         echo "</a>";
     }
 }
