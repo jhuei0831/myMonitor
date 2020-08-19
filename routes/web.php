@@ -23,8 +23,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Notification
-Route::get('/notifications', 'NotificationController@index')->name('notifications.index');
-Route::post('/notifications/post', 'NotificationController@notifications')->name('notifications.post');
-Route::get('/notifications/create', 'NotificationController@create')->name('notifications.create');
-Route::post('/notifications/store', 'NotificationController@store')->name('notifications.store');
+//Resource
+Route::prefix('manage')->middleware('auth')->group(function () {
+    // Notification
+    Route::get('/notifications', 'NotificationController@index')->name('notifications.index');
+    Route::post('/notifications/post', 'NotificationController@notifications')->name('notifications.post');
+    Route::get('/notifications/create', 'NotificationController@create')->name('notifications.create');
+    Route::post('/notifications/store', 'NotificationController@store')->name('notifications.store');
+    Route::get('/notifications/edit/{id}', 'NotificationController@edit')->name('notifications.edit');
+    Route::post('/notifications/update/{id}', 'NotificationController@update')->name('notifications.update');
+    Route::any('/notifications/destroy/{id}', 'NotificationController@destroy')->name('notifications.destroy');
+});
+

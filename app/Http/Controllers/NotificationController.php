@@ -44,6 +44,30 @@ class NotificationController extends Controller
         return back()->with('success', '快速廣播新增成功');
     }
 
+    public function edit($id)
+    {
+        $notification = Notification::findOrFail($id);
+        return view('manage/notifications/edit', compact('notification'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $notification = Notification::findOrFail($id);
+        $notification->title = $request->title;
+        $notification->icon = $request->icon;
+        $notification->message = $request->message;
+        $notification->footer = $request->footer;
+        $notification->width = $request->width;
+        $notification->save();
+        return back()->with('success', '快速廣播修改成功');
+    }
+
+    public function destroy($id)
+    {
+        Notification::destroy($id);
+        return back()->with('success', '快速廣播刪除成功');
+    }
+
     public function notifications(Request $request)
     {
         $title = $request->title;

@@ -17,17 +17,18 @@ class ButtonPresenter
 
     public static function Deleting($id)
     {
-        // $url = URL::full();
-        echo "<button type='submit' class='btn btn-sm btn-danger btn-delete'>";
+        $url = URL::full();
+        echo "<a href='{$url}/destroy/{$id}' class='btn btn-sm btn-danger btn-delete'>";
         echo 	"<i class='fas fa-trash-alt'></i>&nbsp;刪除";
-        echo "</button>";
+        echo "</a>";
     }
 
     public static function Edit($id)
     {
-        echo "<button type=\"submit\" class='btn btn-sm btn-success' formtarget='_blank'>";
-        echo "<i class='fas fa-pencil-alt'></i>&nbsp;編輯";
-        echo "</button>";
+        $url = URL::full();
+        echo "<a href='{$url}/edit/{$id}' class='btn btn-sm btn-success' formtarget='_blank'>";
+        echo    "<i class='fas fa-pencil-alt'></i>&nbsp;編輯";
+        echo "</a>";
     }
 
     public static function Create()

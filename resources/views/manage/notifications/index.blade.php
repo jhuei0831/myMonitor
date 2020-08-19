@@ -61,7 +61,7 @@
                             <tbody>
                                 @foreach ($notifications as $notification)
                                     <tr>
-                                        <td></td>
+                                        <td><a href=""><i class="fas fa-volume-up"></i></a></td>
                                         <td>{{ $notification->title }}</td>
                                         <td>{{ $notification->icon }}</td>
                                         <td>{{ $notification->message }}</td>
