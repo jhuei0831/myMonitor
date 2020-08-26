@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label for="width">寬度</label>
-                            <input type="number" class="form-control @error('width') is-invalid @enderror" id="width" name="width" value="{{ old('width') }}" placeholder="必填">
+                            <input type="number" min="600" class="form-control @error('width') is-invalid @enderror" id="width" name="width" value="{{ old('width') }}" placeholder="必填">
                             @error('width')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-center">
-                        <input type="submit" class="btn btn-primary" value="新增">
+                        <input type="submit" class="btn btn-success" value="新增">
                     </div>
                 </form>
             </div>

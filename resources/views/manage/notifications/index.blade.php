@@ -4,10 +4,10 @@
 @section('content')
 <div class="container">
     <div class="btn-group" role="group" aria-label="Basic example" id="toggle">
-        <a type="button" class="btn normal border btn-success text-light active noHover">廣播</a>
-        <a type="button" class="btn quick border noHover">快速廣播</a>
+        <a type="button" class="btn quick border btn-success text-light active noHover">快速廣播</a>
+        <a type="button" class="btn normal border noHover">廣播</a>
     </div><hr>
-    <div class="row justify-content-center" id="boradcast_normal">
+    <div class="row justify-content-center" id="boradcast_normal" hidden>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-primary text-light"><i class="fas fa-broadcast-tower"></i>&nbsp;廣播</div>
@@ -27,7 +27,9 @@
                         <label for="message">內容</label>
                         <input class="form-control" type="text" name="message">
                         <label for="footer">Footer</label>
-                        <input class="form-control" type="text" name="footer">             
+                        <input class="form-control" type="text" name="footer">     
+                        <label for="footer">寬度</label>
+                        <input class="form-control" type="number" min="600" name="width">        
                 </div>
                 <div class="card-footer text-center">
                     <input type="submit" class="btn btn-success">
@@ -36,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center" id="boradcast_quick" hidden>
+    <div class="row justify-content-center" id="boradcast_quick">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-primary text-light"><i class="fas fa-broadcast-tower"></i>&nbsp;快速廣播</div>
@@ -61,7 +63,7 @@
                             <tbody>
                                 @foreach ($notifications as $notification)
                                     <tr>
-                                        <td><a href=""><i class="fas fa-volume-up"></i></a></td>
+                                        <td><a href="{{ route('notifications.quick_post', $notification->id) }}"><i class="fas fa-volume-up"></i></a></td>
                                         <td>{{ $notification->title }}</td>
                                         <td>{{ $notification->icon }}</td>
                                         <td>{{ $notification->message }}</td>

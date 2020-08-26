@@ -103,7 +103,7 @@ class LogService
 		);
     }
 
-    public function write_log($table,$data,$action = NULL)
+    public function write_log($table, $data, $action = NULL)
     {
     	$agent = $this->get_agent();
 

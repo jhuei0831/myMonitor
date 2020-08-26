@@ -37,10 +37,12 @@ class NotificationController extends Controller
         return view('manage/notifications/create');
     }
 
+    // 新增
     public function store(Request $request)
     {
         $request->request->add(['user_id' => Auth::user()->id]);
         Notification::create($request->except('_token', '_method'));
+        $this->log->write_log('notification', $request->except(['_token']), 'create');
         return back()->with('success', '快速廣播新增成功');
     }
 
@@ -50,34 +52,47 @@ class NotificationController extends Controller
         return view('manage/notifications/edit', compact('notification'));
     }
 
+    // 更新
     public function update(Request $request, $id)
     {
         $notification = Notification::findOrFail($id);
-        $notification->title = $request->title;
-        $notification->icon = $request->icon;
-        $notification->message = $request->message;
-        $notification->footer = $request->footer;
-        $notification->width = $request->width;
+        foreach ($request->except(['_token']) as $key => $value) {
+            $notification->$key = $request->$key;
+        }
         $notification->save();
+        $this->log->write_log('notification', $request->except(['_token']), 'update');
         return back()->with('success', '快速廣播修改成功');
     }
 
+    // 刪除
     public function destroy($id)
     {
+        $notification = Notification::findOrFail($id);
         Notification::destroy($id);
+        $this->log->write_log('notification', $notification, 'delete');
         return back()->with('success', '快速廣播刪除成功');
     }
 
+    // 廣播
     public function notifications(Request $request)
     {
-        $title = $request->title;
-        $icon = $request->icon;
-        $message = $request->message;
-        $footer = $request->footer;
-        $data = ['title' => $title, 'icon' => $icon, 'message' => $message, 'footer' => $footer];
+        foreach ($request->except(['_token']) as $key => $value) {
+            $$key = $request->$key;
+        }
+        event(new OrderNotification($title, $icon, $message, $footer, $width));
+        $this->log->write_log('notification', $request->except(['_token']), 'post');
+        return back()->with('success', '廣播成功');
+    }
 
-        event(new OrderNotification($title, $icon, $message, $footer));
-        $this->log->write_log('notification', $data, 'post');
+    // 快速廣播
+    public function quick_notifications($id)
+    {
+        $notification = Notification::findOrFail($id);
+        foreach ($notification->toarray() as $key => $value) {
+            $$key = $notification->$key;
+        }
+        event(new OrderNotification($title, $icon, $message, $footer, $width));
+        $this->log->write_log('notification', $notification->toarray(), 'post');
         return back()->with('success', '廣播成功');
     }
 }

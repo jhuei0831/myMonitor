@@ -19,6 +19,7 @@
                 title: data['title'],
                 text: data['message'],
                 footer: data['footer'],
+                width: data['width'],
                 timer: 5000,
             })
         });

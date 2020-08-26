@@ -32,6 +32,7 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     Route::post('/notifications/store', 'NotificationController@store')->name('notifications.store');
     Route::get('/notifications/edit/{id}', 'NotificationController@edit')->name('notifications.edit');
     Route::post('/notifications/update/{id}', 'NotificationController@update')->name('notifications.update');
-    Route::any('/notifications/destroy/{id}', 'NotificationController@destroy')->name('notifications.destroy');
+    Route::get('/notifications/destroy/{id}', 'NotificationController@destroy')->name('notifications.destroy');
+    Route::get('/notifications/quick_post/{id}', 'NotificationController@quick_notifications')->name('notifications.quick_post');
 });
 

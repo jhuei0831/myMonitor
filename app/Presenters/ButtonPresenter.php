@@ -18,7 +18,7 @@ class ButtonPresenter
     public static function Deleting($id)
     {
         $url = URL::full();
-        echo "<a href='{$url}/destroy/{$id}' class='btn btn-sm btn-danger btn-delete'>";
+        echo "<a href='{$url}/destroy/{$id}' class='btn btn-sm btn-danger btn-delete' id='delete'>";
         echo 	"<i class='fas fa-trash-alt'></i>&nbsp;刪除";
         echo "</a>";
     }
@@ -77,7 +77,7 @@ class ButtonPresenter
         $current_url = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
         $target_url = ($url) ? $url: URL::previous();
 
-        echo "<a class='btn btn-sm btn-warning' href='{$target_url}'>";
+        echo "<a class='btn btn-sm btn-default' href='{$target_url}'>";
         echo 	"<i class='fas fa-arrow-left'></i> 回到列表";
         echo "</a>";
     }

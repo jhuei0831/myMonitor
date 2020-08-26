@@ -14,19 +14,20 @@ class OrderNotification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $title, $icon, $message, $footer;
+    public $title, $icon, $message, $footer, $width;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($title, $icon, $message, $footer)
+    public function __construct($title, $icon, $message, $footer, $width)
     {
         $this->title = $title;
         $this->icon = $icon;
         $this->message = $message;
         $this->footer = $footer;
+        $this->width = (int) $width;
     }
 
     /**
