@@ -12,7 +12,7 @@
         cluster: 'ap3'
         });
 
-        var channel = pusher.subscribe('my-channel');
+        var channel = pusher.subscribe('my-channel{{ Auth::user()->id }}');
         channel.bind('my-event', function(data) {
             Swal.fire({
                 icon: data['icon'],
@@ -26,9 +26,5 @@
     </script>
 </head>
 <body>
-    <h1>Pusher Test</h1>
-    <p>
-        Try publishing an event to channel <code>my-channel</code>
-        with event name <code>my-event</code>.
-    </p>
+
 </body>

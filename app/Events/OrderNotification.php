@@ -14,15 +14,16 @@ class OrderNotification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $title, $icon, $message, $footer, $width;
+    public $user_id, $title, $icon, $message, $footer, $width;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($title, $icon, $message, $footer, $width)
+    public function __construct($user_id, $title, $icon, $message, $footer, $width)
     {
+        $this->user_id = $user_id;
         $this->title = $title;
         $this->icon = $icon;
         $this->message = $message;
@@ -37,7 +38,11 @@ class OrderNotification implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return ['my-channel'.$this->user_id];
+        // return [
+        //     new PrivateChannel('App.Message.' . $this->message->to_user_id),
+        //     new PrivateChannel('App.Message.'. $this->message->to_user_id .'.From.'. $this->message->from_user_id)
+        // ];
     }
 
     public function broadcastAs()

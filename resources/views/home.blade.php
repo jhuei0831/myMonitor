@@ -4,15 +4,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">快速廣播</div>
+                <div class="card-header">請輸入頻道UUID</div>
 
                 <div class="card-body">
                     <form action="{{ route('notifications.post') }}" method="post">
                         @csrf
-                        <label for="fire">輸入要廣播的內容</label>
-                        <input class="form-control" type="text" name="fire">
+                        <input type="text" name="uuid" placeholder="請輸入頻道UUID" class="form-control">
                     </form>
                 </div>
             </div>
