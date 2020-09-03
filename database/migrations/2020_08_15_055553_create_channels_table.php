@@ -15,10 +15,10 @@ class CreateChannelsTable extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->comment('使用者');
-            $table->string('token')->comment('token');
-            $table->string('name')->comment('頻道名稱');     
-            $table->string('group')->comment('頻道群名稱');     
+            $table->string('uuid')->comment('uuid');
+            $table->string('user_id')->comment('使用者');    
+            $table->string('name')->comment('頻道名稱');    
+            $table->string('password')->nullable()->comment('密碼');     
             $table->timestamps();
         });
     }

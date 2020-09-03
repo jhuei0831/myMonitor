@@ -2,11 +2,32 @@
 
 namespace App\Http\Controllers;
 
+# Model
 use App\Channel;
+
+# Facades
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+# Service
+use App\Services\LogService;
+use App\Services\UserService;
 
 class ChannelController extends Controller
 {
+    private $log, $user;
+
+    public function __construct(LogService $log, UserService $user)
+    {
+        $this->log = $log;
+        $this->user = $user;
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            $this->user_id = Auth::user()->id;
+            return $next($request);
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +35,9 @@ class ChannelController extends Controller
      */
     public function index()
     {
-        //
+        $channels = Channel::where('user_id', $this->user_id)->paginate();
+        return view('manage/channels/index', compact('channels'));
+
     }
 
     /**

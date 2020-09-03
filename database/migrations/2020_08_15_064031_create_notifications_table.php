@@ -16,6 +16,7 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->comment('使用者');
+            $table->integer('channel_id')->comment('頻道');
             $table->string('title')->nullable()->comment('標題');
             $table->string('icon')->nullable()->comment('icon');
             $table->longtext('message')->nullable()->comment('訊息內容');

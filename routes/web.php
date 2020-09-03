@@ -34,5 +34,8 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     Route::post('/notifications/update/{id}', 'NotificationController@update')->name('notifications.update');
     Route::get('/notifications/destroy/{id}', 'NotificationController@destroy')->name('notifications.destroy');
     Route::get('/notifications/quick_post/{id}', 'NotificationController@quick_notifications')->name('notifications.quick_post');
+    // Channel
+    Route::get('/channels', 'ChannelController@index')->name('channels.index');
+
 });
 

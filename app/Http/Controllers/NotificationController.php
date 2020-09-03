@@ -56,9 +56,6 @@ class NotificationController extends Controller
     {
         $notification = Notification::findOrFail($id);
         $this->user->check_user($notification->user_id, $this->user_id);
-        // if ($notification->user_id != $this->user_id) {
-        //     return back()->with('error', '你壞壞');
-        // }
         return view('manage/notifications/edit', compact('notification'));
     }
 
@@ -78,6 +75,7 @@ class NotificationController extends Controller
     public function destroy($id)
     {
         $notification = Notification::findOrFail($id);
+        $this->user->check_user($notification->user_id, $this->user_id);
         Notification::destroy($id);
         $this->log->write_log('notification', $notification, 'delete');
         return back()->with('success', '快速廣播刪除成功');
@@ -98,6 +96,7 @@ class NotificationController extends Controller
     public function quick_notifications($id)
     {
         $notification = Notification::findOrFail($id);
+        $this->user->check_user($notification->user_id, $this->user_id);
         foreach ($notification->toarray() as $key => $value) {
             $$key = $notification->$key;
         }

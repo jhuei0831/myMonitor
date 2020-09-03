@@ -27,10 +27,9 @@
                         <div class="form-group">
                             <label for="icon">Icon</label>
                             <select class="custom-select" name="icon">
-                                <option>null</option>
-                                <option>error</option>
-                                <option>success</option>
-                                <option>info</option>
+                                @foreach (Config::get('variables.notification.icon') as $item)
+                                    <option>{{ $item }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
