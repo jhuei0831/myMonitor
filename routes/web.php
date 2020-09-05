@@ -36,6 +36,8 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     Route::get('/notifications/quick_post/{id}', 'NotificationController@quick_notifications')->name('notifications.quick_post');
     // Channel
     Route::get('/channels', 'ChannelController@index')->name('channels.index');
+    Route::get('/channels/create', 'ChannelController@create')->name('channels.create');
+    Route::post('/channels/store', 'ChannelController@store')->name('channels.store');
 
 });
 

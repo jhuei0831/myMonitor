@@ -1,8 +1,11 @@
 @inject('button','App\Presenters\ButtonPresenter')
 @extends('_layouts.app')
-
 @section('content')
 <div class="container">
+    <button class="icon-btn add-btn">
+        <div class="add-icon"></div>
+        <div class="btn-txt">新增頻道</div>
+    </button>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">

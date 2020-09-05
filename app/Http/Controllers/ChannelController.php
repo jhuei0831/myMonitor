@@ -7,6 +7,7 @@ use App\Channel;
 
 # Facades
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 # Service
@@ -47,7 +48,7 @@ class ChannelController extends Controller
      */
     public function create()
     {
-        //
+        return view('manage/channels/create');
     }
 
     /**
@@ -58,7 +59,10 @@ class ChannelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(['uuid' => Str::uuid(), 'user_id' => $this->user_id]);
+        Channel::create($request->except('_token', '_method'));
+        $this->log->write_log('channel', $request->except(['_token']), 'create');
+        return back()->with('success', '頻道新增成功');
     }
 
     /**
