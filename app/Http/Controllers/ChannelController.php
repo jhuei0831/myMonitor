@@ -38,7 +38,6 @@ class ChannelController extends Controller
     {
         $channels = Channel::where('user_id', $this->user_id)->paginate();
         return view('manage/channels/index', compact('channels'));
-
     }
 
     /**
@@ -82,9 +81,11 @@ class ChannelController extends Controller
      * @param  \App\Channel  $channel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Channel $channel)
+    public function edit($id)
     {
-        //
+        $channel = Channel::findOrFail($id);
+        $this->user->check_user($channel->user_id, $this->user_id);
+        return view('manage/channels/edit', compact('channel'));
     }
 
     /**
@@ -94,9 +95,13 @@ class ChannelController extends Controller
      * @param  \App\Channel  $channel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Channel $channel)
+    public function update(Request $request, $id)
     {
-        //
+        $channel = Channel::findOrFail($id);
+        $channel->name = $request->name;
+        $channel->save();
+        $this->log->write_log('channel', $request->except(['_token']), 'update');
+        return back()->with('success', '頻道修改成功');
     }
 
     /**
@@ -105,8 +110,12 @@ class ChannelController extends Controller
      * @param  \App\Channel  $channel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Channel $channel)
+    public function destroy($id)
     {
-        //
+        $channel = Channel::findOrFail($id);
+        $this->user->check_user($channel->user_id, $this->user_id);
+        Channel::destroy($id);
+        $this->log->write_log('channel', $channel, 'delete');
+        return back()->with('success', '頻道刪除成功');
     }
 }

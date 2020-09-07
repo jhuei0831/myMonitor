@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+# Model
+use App\Channel;
+
+# Facades
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
+# Event
 use App\Events\OrderMonitor;
 
 class HomeController extends Controller
@@ -24,7 +32,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $channels = Channel::where('user_id', Auth::user()->id)->paginate();
+        return view('home', compact('channels'));
     }
 
     public function fire()

@@ -56,18 +56,9 @@ class ButtonPresenter
         echo "</p>";
     }
 
-    public static function To($url=false,$to, $txt, $query="", $class="btn-secondary", $fas="list-ol", $confirm=false)
+    public static function To($to, $fas="list-ol", $class="", $id="",$txt="")
     {
-        $url = $url?URL::full():'';
-        if ($confirm == true) {
-            $confirm = 'onclick="return confirm(\'確認刪除?\')"';
-        }
-        if ($url) {
-            echo "<a class='btn btn-sm {$class}' href='{$url}/{$to}/{$query}' {$confirm}>";
-        }
-        else{
-            echo "<a class='btn btn-sm {$class}' href='{$to}/{$query}' {$confirm}>";
-        }
+        echo "<a id='$id' class='btn btn-sm {$class}' href='{$to}'>";
         echo 	"<i class='fas fa-{$fas}'></i>&nbsp;{$txt}";
         echo "</a>";
     }

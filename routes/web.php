@@ -38,6 +38,8 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     Route::get('/channels', 'ChannelController@index')->name('channels.index');
     Route::get('/channels/create', 'ChannelController@create')->name('channels.create');
     Route::post('/channels/store', 'ChannelController@store')->name('channels.store');
-
+    Route::get('/channels/edit/{id}', 'ChannelController@edit')->name('channels.edit');
+    Route::post('/channels/update/{id}', 'ChannelController@update')->name('channels.update');
+    Route::get('/channels/destroy/{id}', 'ChannelController@destroy')->name('channels.destroy');
 });
 
