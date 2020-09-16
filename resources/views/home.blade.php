@@ -12,17 +12,19 @@
     <div class="row justify-content-center">
         @foreach ($channels as $channel)
            <div class="col-md-4">
-                <div class="card shadow">
+                <div class="card shadow channel">
                     <div class="card-header">
                         {{ $channel->name }}
                     </div>
                     <div class="card-body">
-                        {{ $channel->uuid }}
-                        {!! $button->To(route("channels.edit", $channel->id), 'edit') !!}
-                        {!! $button->To(route("channels.destroy", $channel->id), 'trash', 'btn-delete', 'delete') !!}
+                        <p>{{ $channel->uuid }}</p>               
+                        <div class="text-right">
+                            {!! $button->To(route("channels.edit", $channel->id), 'edit') !!}
+                            {!! $button->To(route("channels.destroy", $channel->id), 'trash', 'btn-delete text-right', 'delete') !!}
+                        </div>   
                     </div>
-                </div>
-            </div> 
+                </div><br>
+            </div>
         @endforeach
     </div>
 </div>

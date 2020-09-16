@@ -9,6 +9,7 @@ use App\Channel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 # Service
 use App\Services\LogService;
@@ -58,7 +59,7 @@ class ChannelController extends Controller
      */
     public function store(Request $request)
     {
-        $request->request->add(['uuid' => Str::uuid(), 'user_id' => $this->user_id]);
+        $request->request->add(['uuid' => Str::uuid(), 'user_id' => $this->user_id, 'password' => Hash::make($request->password)]);
         Channel::create($request->except('_token', '_method'));
         $this->log->write_log('channel', $request->except(['_token']), 'create');
         return back()->with('success', '頻道新增成功');
