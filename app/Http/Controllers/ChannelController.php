@@ -14,15 +14,20 @@ use Illuminate\Support\Facades\Hash;
 # Service
 use App\Services\LogService;
 use App\Services\UserService;
+use App\Services\ChannelService;
+
+#Request
+use App\Http\Requests\ChannelRequest;
 
 class ChannelController extends Controller
 {
-    private $log, $user;
+    private $log, $user, $channelservice;
 
-    public function __construct(LogService $log, UserService $user)
+    public function __construct(LogService $log, UserService $user, ChannelService $channelservice)
     {
         $this->log = $log;
         $this->user = $user;
+        $this->channelservice = $channelservice;
         $this->middleware('auth');
         $this->middleware(function ($request, $next) {
             $this->user_id = Auth::user()->id;
@@ -96,11 +101,14 @@ class ChannelController extends Controller
      * @param  \App\Channel  $channel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ChannelRequest $request, $id)
     {
-        $channel = Channel::findOrFail($id);
-        $channel->name = $request->name;
-        $channel->save();
+        $validated = $request->validated();
+        // $channel = Channel::findOrFail($id);
+        // $channel->name = $request->name;
+        // $channel->password = Hash::make($request->password);
+        // $channel->save();
+        $this->channelservice->update($request, $id);
         $this->log->write_log('channel', $request->except(['_token']), 'update');
         return back()->with('success', '頻道修改成功');
     }

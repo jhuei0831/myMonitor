@@ -73,7 +73,7 @@
 	Swal.fire({
 		// position: 'center',
 		icon: 'error',
-		title: '{{ trans("action.check") }}',
+		title: '{{ trans("請確認表單中的錯誤!") }}',
 		showConfirmButton: false,
 		showCloseButton: true,
 		// timer: 1500

@@ -16,7 +16,7 @@
                         </ul>
                         @csrf
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="is_password">
+                            <input class="form-check-input" type="checkbox" value="" id="is_password" checked>
                             <label class="form-check-label" for="is_password">加密</label>
                         </div>
                         <div class="form-group">
@@ -28,18 +28,18 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group d-none" id="password">
+                        <div class="form-group" id="password">
                             <label for="password">密碼</label>
-                            <input type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $channel->password }}" placeholder="必填">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="必填">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group d-none" id="password_confirmation">
+                        <div class="form-group" id="password_confirmation">
                             <label for="password_confirmation">密碼確認</label>
-                            <input type="text" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{ $channel->password_confirmation }}" placeholder="必填">
+                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="必填">
                             @error('password_confirmation')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
