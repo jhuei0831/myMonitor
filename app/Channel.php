@@ -11,7 +11,7 @@ class Channel extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        "uuid" ,"user_id", "name", "password",
+        "uuid", "user_id", "name", "password",
     ];
 
     protected $hidden = [

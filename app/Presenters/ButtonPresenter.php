@@ -18,7 +18,7 @@ class ButtonPresenter
     public static function Deleting($id)
     {
         $url = URL::full();
-        echo "<a href='{$url}/destroy/{$id}' class='btn btn-sm btn-danger btn-delete' id='delete'>";
+        echo "<a href='{$url}/destroy/' class='btn btn-sm btn-danger btn-delete' id='delete' data-id='{$id}'>";
         echo 	"<i class='fas fa-trash-alt'></i>&nbsp;刪除";
         echo "</a>";
     }

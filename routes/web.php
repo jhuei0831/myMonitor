@@ -41,5 +41,8 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     Route::get('/channels/edit/{id}', 'ChannelController@edit')->name('channels.edit');
     Route::post('/channels/update/{id}', 'ChannelController@update')->name('channels.update');
     Route::get('/channels/destroy/{id}', 'ChannelController@destroy')->name('channels.destroy');
+    // Log
+    Route::get('/log', 'LogController@index')->name('log.index');
+
 });
 

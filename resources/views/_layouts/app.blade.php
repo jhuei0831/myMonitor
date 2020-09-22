@@ -15,6 +15,7 @@
     <script>
         $('.btn-delete').on('click',function () {
             event.preventDefault();
+            var id = $(this).data('id');
             Swal.fire({
                 title: '確認刪除?',
                 text: '若刪除資料將無法復原!',
@@ -26,7 +27,7 @@
                 cancelButtonText: '取消'
                 }).then((result) => {
                     if (result.value) {
-                            window.location.href = document.getElementById("delete").href;
+                            window.location.href = document.getElementById("delete").href + id;
                         } else {
                             Swal.fire('資料已保留');
                         }

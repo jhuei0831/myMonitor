@@ -28,7 +28,7 @@
                                     <tr>
                                         <td>{{ $channel->uuid }}</td>
                                         <td>{{ $channel->name }}</td>
-                                        <td>{{ $channel->password == 'NULL' ? 'YES' : 'NO' }}</td>
+                                        <td>{{ $channel->password == NULL ? 'NO' : 'YES' }}</td>
                                         <td>{{ $channel->created_at }}</td>
                                         <td>{{ $channel->updated_at }}</td>
                                         <td>{!! $button->edit($channel->id) !!}&nbsp;{!! $button->deleting($channel->id) !!}</td>

@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('notifications.index') }}">廣播</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('log.index') }}">LOG</a>
+                    </li>
                 @endguest
                 
             </ul>

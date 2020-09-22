@@ -16,7 +16,7 @@
                         </ul>
                         @csrf
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="is_password" checked>
+                            <input class="form-check-input" type="checkbox" name="is_password" value="" id="is_password" checked>
                             <label class="form-check-label" for="is_password">加密</label>
                         </div>
                         <div class="form-group">

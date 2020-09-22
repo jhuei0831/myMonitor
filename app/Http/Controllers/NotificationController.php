@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 # Model
 use App\Notification;
+use App\Channel;
 
 # Event
 use App\Events\OrderNotification;
@@ -40,13 +41,15 @@ class NotificationController extends Controller
 
     public function create()
     {
-        return view('manage/notifications/create');
+        $channels = Channel::where('user_id', $this->user_id)->get();
+        return view('manage/notifications/create',compact('channels'));
     }
 
     // 新增
     public function store(Request $request)
     {
         $request->request->add(['user_id' => $this->user_id]);
+        // dd($request->all());
         Notification::create($request->except('_token', '_method'));
         $this->log->write_log('notification', $request->except(['_token']), 'create');
         return back()->with('success', '快速廣播新增成功');

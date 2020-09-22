@@ -34,6 +34,15 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="password_confirmation">密碼確認</label>
+                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                            @error('password_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="card-footer text-center">
                         <input type="submit" class="btn btn-success" value="新增">

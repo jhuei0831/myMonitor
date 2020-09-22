@@ -14,7 +14,7 @@
            <div class="col-md-4">
                 <div class="card shadow channel">
                     <div class="card-header">
-                        {{ $channel->name }}
+                        {{ $channel->name }}&nbsp;{!! $channel->password == NULL ? '' : '<i class="fas fa-key"></i>' !!}
                     </div>
                     <div class="card-body">
                         <p>{{ $channel->uuid }}</p>               

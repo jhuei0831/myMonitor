@@ -16,6 +16,14 @@
                         </ul>
                         @csrf
                         <div class="form-group">
+                            <label for="channel_id">頻道</label>
+                            <select class="custom-select" name="channel_id">
+                                @foreach ($channels as $channel)
+                                    <option value="{{ $channel->id }}">{{ $channel->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="title">標題</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" placeholder="必填">
                             @error('title')

@@ -11,6 +11,6 @@ class Notification extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        "user_id", "title", "icon" , "message", "footer", "width", 
+        "user_id", "channel_id", "title", "icon" , "message", "footer", "width", 
     ];
 }

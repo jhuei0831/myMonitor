@@ -62,11 +62,11 @@ class ChannelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChannelRequest $request)
     {
-        $request->request->add(['uuid' => Str::uuid(), 'user_id' => $this->user_id, 'password' => Hash::make($request->password)]);
-        Channel::create($request->except('_token', '_method'));
-        $this->log->write_log('channel', $request->except(['_token']), 'create');
+        $validated = $request->validated();
+        $this->channelservice->store($request, $this->user_id);
+        $this->log->write_log('channel', $request->except(['_token', 'password', 'password_confirmation']), 'create');
         return back()->with('success', '頻道新增成功');
     }
 
@@ -76,7 +76,7 @@ class ChannelController extends Controller
      * @param  \App\Channel  $channel
      * @return \Illuminate\Http\Response
      */
-    public function show(Channel $channel)
+    public function show(ChannelRequest $channel)
     {
         //
     }
@@ -104,12 +104,8 @@ class ChannelController extends Controller
     public function update(ChannelRequest $request, $id)
     {
         $validated = $request->validated();
-        // $channel = Channel::findOrFail($id);
-        // $channel->name = $request->name;
-        // $channel->password = Hash::make($request->password);
-        // $channel->save();
         $this->channelservice->update($request, $id);
-        $this->log->write_log('channel', $request->except(['_token']), 'update');
+        $this->log->write_log('channel', $request->except(['_token', 'password', 'password_confirmation']), 'update');
         return back()->with('success', '頻道修改成功');
     }
 
@@ -122,6 +118,7 @@ class ChannelController extends Controller
     public function destroy($id)
     {
         $channel = Channel::findOrFail($id);
+        dd($channel);
         $this->user->check_user($channel->user_id, $this->user_id);
         Channel::destroy($id);
         $this->log->write_log('channel', $channel, 'delete');
