@@ -21,6 +21,7 @@
                         <div class="text-right">
                             {!! $button->To(route("channels.edit", $channel->id), 'edit') !!}
                             {!! $button->To(route("channels.destroy", $channel->id), 'trash', 'btn-delete text-right', 'delete') !!}
+                            {!! $button->To(route("channels.index", $channel->id), 'list', 'text-right') !!}
                         </div>   
                     </div>
                 </div><br>

@@ -43,6 +43,7 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     Route::get('/channels/destroy/{id}', 'ChannelController@destroy')->name('channels.destroy');
     // Log
     Route::get('/log', 'LogController@index')->name('log.index');
+    Route::get('/log/detail/{id}', 'LogController@detail')->name('log.detail');
 
 });
 

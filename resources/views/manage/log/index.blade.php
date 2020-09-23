@@ -21,6 +21,7 @@
                                     <td>動作</td>
                                     <td>資料表</td>
                                     <td>建立時間</td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,7 @@
                                         <td>{{ $log->action }}</td>
                                         <td>{{ $log->table }}</td>
                                         <td>{{ $log->created_at }}</td>
+                                        <td>{{ $button->detail(route('log.detail', $log->id)) }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

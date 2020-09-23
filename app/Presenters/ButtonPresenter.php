@@ -3,14 +3,14 @@
 namespace App\Presenters;
 
 use URL;
+use Redirect;
 use Illuminate\Database\Eloquent\Model;
 
 class ButtonPresenter
 {
-    public static function Detail($id)
+    public static function Detail($url)
     {
-        $url = URL::full();
-        echo "<button type=\"submit\" class='btn btn-sm btn-secondary'>";
+        echo "<a href='{$url}' class='btn btn-sm btn-secondary'>";
         echo 	"<i class='fas fa-info-circle'></i>&nbsp;詳細資料";
         echo "</a>";
     }

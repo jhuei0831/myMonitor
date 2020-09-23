@@ -18,6 +18,7 @@
                         <div class="form-group">
                             <label for="channel_id">頻道</label>
                             <select class="custom-select" name="channel_id">
+                                <option value="all">全部</option>
                                 @foreach ($channels as $channel)
                                     <option value="{{ $channel->id }}">{{ $channel->name }}</option>
                                 @endforeach

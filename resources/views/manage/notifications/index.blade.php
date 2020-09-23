@@ -52,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <td></td>
+                                    <td>頻道</td>
                                     <td>標題</td>
                                     <td>Icon</td>
                                     <td>訊息內容</td>
@@ -64,6 +65,7 @@
                                 @foreach ($notifications as $notification)
                                     <tr>
                                         <td><a href="{{ route('notifications.quick_post', $notification->id) }}"><i class="fas fa-volume-up"></i></a></td>
+                                        <td>{{ $notification->channel->uuid }}</td>
                                         <td>{{ $notification->title }}</td>
                                         <td>{{ $notification->icon }}</td>
                                         <td>{{ $notification->message }}</td>

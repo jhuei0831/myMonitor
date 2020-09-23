@@ -11,8 +11,11 @@
                         <h4><i class="fas fa-user-circle"></i> 修改頻道</h4>
                     </div>
                     <div class="card-body">
+                        <div class="alert alert-warning">
+                            加密打勾後密碼和密碼確認為必填。
+                        </div>
                         <ul class="list-unstyled">
-                            <li>{!! $button->GoBack(route('channels.index')) !!}</li>
+                            <li>{!! $button->GoBack(route('home')) !!}</li>
                         </ul>
                         @csrf
                         <div class="form-check">

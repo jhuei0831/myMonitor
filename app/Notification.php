@@ -13,4 +13,9 @@ class Notification extends Model
     protected $fillable = [
         "user_id", "channel_id", "title", "icon" , "message", "footer", "width", 
     ];
+
+    public function channel()
+    {
+        return $this->hasOne('App\Channel', 'id', 'channel_id');
+    }
 }

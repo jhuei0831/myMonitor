@@ -9,7 +9,7 @@
         Pusher.logToConsole = true;
 
         var pusher = new Pusher('201e16222cc2044f34c0', {
-        cluster: 'ap3'
+            cluster: 'ap3'
         });
 
         var channel = pusher.subscribe('my-channel{{ Auth::user()->id }}');

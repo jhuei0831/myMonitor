@@ -118,7 +118,6 @@ class ChannelController extends Controller
     public function destroy($id)
     {
         $channel = Channel::findOrFail($id);
-        dd($channel);
         $this->user->check_user($channel->user_id, $this->user_id);
         Channel::destroy($id);
         $this->log->write_log('channel', $channel, 'delete');
