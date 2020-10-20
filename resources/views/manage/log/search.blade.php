@@ -11,8 +11,9 @@
                     <ul class="list-unstyled">
                         <p>
                             <button class="btn btn-sm btn-info text-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                篩選
+                                <i class="fas fa-filter"></i> 篩選
                             </button>
+                            {{ $button->To(route('log.index'), 'undo', 'btn-dark', '', '重置') }}
                         </p>
                         <div class="collapse" id="collapseExample">
                             <form action="{{ route('log.search') }}" method="post">
@@ -21,7 +22,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
                                             <label for="IP">IP</label>
-                                            <input type="text" class="form-control @error('IP') is-invalid @enderror" id="IP" name="IP" value="{{ old('IP') }}" placeholder="IP">
+                                            <input type="text" class="form-control @error('IP') is-invalid @enderror" id="IP" name="IP" value="{{ old('IP') }}" placeholder="必填">
                                             @error('IP')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -55,11 +56,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div> 
+                                    </div>  
                                     <button type="submit" class="btn btn-sm btn-secondary">
                                         <i class="fas fa-search"></i> 搜尋
-                                    </button>                           
-                                </div>                                
+                                    </button>                            
+                                </div>
                             </form>
                         </div>
                     </ul>
@@ -77,7 +78,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($logs as $log)
+                                @foreach ($logs_search as $log)
                                     <tr>
                                         <td>{{ $log->user }}</td>
                                         <td>{{ $log->ip }}</td>
@@ -93,7 +94,7 @@
                     </div>              
                 </div>
                 <div class="card-footer text-center">
-                    {!! $logs->links("pagination::bootstrap-4") !!}
+                    {!! $logs_search->links("pagination::bootstrap-4") !!}
                 </div>
             </div>
         </div>

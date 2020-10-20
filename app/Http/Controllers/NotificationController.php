@@ -51,7 +51,7 @@ class NotificationController extends Controller
         $request->request->add(['user_id' => $this->user_id]);
         // dd($request->all());
         Notification::create($request->except('_token', '_method'));
-        $this->log->write_log('notification', $request->except(['_token']), 'create');
+        $this->log->write_log('notifications', $request->except(['_token']), 'create');
         return back()->with('success', '快速廣播新增成功');
     }
 
@@ -70,7 +70,7 @@ class NotificationController extends Controller
             $notification->$key = $request->$key;
         }
         $notification->save();
-        $this->log->write_log('notification', $request->except(['_token']), 'update');
+        $this->log->write_log('notifications', $request->except(['_token']), 'update');
         return back()->with('success', '快速廣播修改成功');
     }
 
@@ -80,7 +80,7 @@ class NotificationController extends Controller
         $notification = Notification::findOrFail($id);
         $this->user->check_user($notification->user_id, $this->user_id);
         Notification::destroy($id);
-        $this->log->write_log('notification', $notification, 'delete');
+        $this->log->write_log('notifications', $notification, 'delete');
         return back()->with('success', '快速廣播刪除成功');
     }
 
@@ -91,7 +91,7 @@ class NotificationController extends Controller
             $$key = $request->$key;
         }
         event(new OrderNotification($this->user_id, $title, $icon, $message, $footer, $width));
-        $this->log->write_log('notification', $request->except(['_token']), 'post');
+        $this->log->write_log('notifications', $request->except(['_token']), 'post');
         return back()->with('success', '廣播成功');
     }
 
@@ -104,7 +104,7 @@ class NotificationController extends Controller
             $$key = $notification->$key;
         }
         event(new OrderNotification($this->user_id, $title, $icon, $message, $footer, $width));
-        $this->log->write_log('notification', $notification->toarray(), 'post');
+        $this->log->write_log('notifications', $notification->toarray(), 'post');
         return back()->with('success', '廣播成功');
     }
 }

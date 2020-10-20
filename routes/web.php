@@ -44,6 +44,7 @@ Route::prefix('manage')->middleware('auth')->group(function () {
     // Log
     Route::get('/log', 'LogController@index')->name('log.index');
     Route::get('/log/detail/{id}', 'LogController@detail')->name('log.detail');
+    Route::any('/log/search', 'LogController@search')->name('log.search');
 
 });
 

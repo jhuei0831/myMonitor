@@ -66,7 +66,7 @@ class ChannelController extends Controller
     {
         $validated = $request->validated();
         $this->channelservice->store($request, $this->user_id);
-        $this->log->write_log('channel', $request->except(['_token', 'password', 'password_confirmation']), 'create');
+        $this->log->write_log('channels', $request->except(['_token', 'password', 'password_confirmation']), 'create');
         return back()->with('success', '頻道新增成功');
     }
 
@@ -105,7 +105,7 @@ class ChannelController extends Controller
     {
         $validated = $request->validated();
         $this->channelservice->update($request, $id);
-        $this->log->write_log('channel', $request->except(['_token', 'password', 'password_confirmation']), 'update');
+        $this->log->write_log('channels', $request->except(['_token', 'password', 'password_confirmation']), 'update');
         return back()->with('success', '頻道修改成功');
     }
 
@@ -120,7 +120,7 @@ class ChannelController extends Controller
         $channel = Channel::findOrFail($id);
         $this->user->check_user($channel->user_id, $this->user_id);
         Channel::destroy($id);
-        $this->log->write_log('channel', $channel, 'delete');
+        $this->log->write_log('channels', $channel, 'delete');
         return back()->with('success', '頻道刪除成功');
     }
 }
