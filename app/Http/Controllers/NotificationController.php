@@ -33,16 +33,16 @@ class NotificationController extends Controller
         });
     }
 
-    public function index()
+    public function index($channel_id)
     {
-        $notifications = Notification::where('user_id', $this->user_id)->paginate();
+        $notifications = Notification::where(['user_id' => $this->user_id, 'channel_id' => $channel_id])->paginate();
         return view('manage/notifications/index',compact('notifications'));
     }
 
-    public function create()
+    public function create($channel_id)
     {
-        $channels = Channel::where('user_id', $this->user_id)->get();
-        return view('manage/notifications/create',compact('channels'));
+        $channel = Channel::where('id', $channel_id)->get();
+        return view('manage/notifications/create',compact('channel'));
     }
 
     // 新增

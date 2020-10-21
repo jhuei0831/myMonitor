@@ -17,4 +17,9 @@ class Channel extends Model
     protected $hidden = [
         'password'
     ];
+
+    public function notifications()
+    {
+        return $this->hasMany('App\Notification', 'channel_id', 'id');
+    }
 }

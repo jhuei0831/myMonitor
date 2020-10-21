@@ -26,9 +26,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Resource
 Route::prefix('manage')->middleware('auth')->group(function () {
     // Notification
-    Route::get('/notifications', 'NotificationController@index')->name('notifications.index');
+    Route::get('/notifications/{id}', 'NotificationController@index')->name('notifications.index');
     Route::post('/notifications/post', 'NotificationController@notifications')->name('notifications.post');
-    Route::get('/notifications/create', 'NotificationController@create')->name('notifications.create');
+    Route::get('/notification/create/{id}', 'NotificationController@create')->name('notifications.create');
     Route::post('/notifications/store', 'NotificationController@store')->name('notifications.store');
     Route::get('/notifications/edit/{id}', 'NotificationController@edit')->name('notifications.edit');
     Route::post('/notifications/update/{id}', 'NotificationController@update')->name('notifications.update');

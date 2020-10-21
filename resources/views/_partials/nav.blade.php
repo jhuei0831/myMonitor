@@ -15,12 +15,12 @@
                         <a class="nav-link" href="#">價目表</a>
                     </li>
                 @else
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('channels.index') }}">頻道</a>
-                    </li>
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('notifications.index') }}">廣播</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('log.index') }}">LOG</a>
                     </li>

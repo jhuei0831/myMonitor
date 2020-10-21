@@ -12,18 +12,10 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li>{!! $button->GoBack(route('notifications.index')) !!}</li>
+                            <li>{!! $button->GoBack(route('notifications.index', request()->id)) !!}</li>
                         </ul>
                         @csrf
-                        <div class="form-group">
-                            <label for="channel_id">頻道</label>
-                            <select class="custom-select" name="channel_id">
-                                <option value="all">全部</option>
-                                @foreach ($channels as $channel)
-                                    <option value="{{ $channel->id }}">{{ $channel->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <input name="channel_id" type="hidden" value="<?=request()->id?>">
                         <div class="form-group">
                             <label for="title">標題</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" placeholder="必填">

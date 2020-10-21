@@ -5,6 +5,7 @@ namespace App\Presenters;
 use URL;
 use Redirect;
 use Illuminate\Database\Eloquent\Model;
+use Request;
 
 class ButtonPresenter
 {
@@ -15,26 +16,26 @@ class ButtonPresenter
         echo "</a>";
     }
 
-    public static function Deleting($id)
+    public static function Deleting($page, $id)
     {
-        $url = URL::full();
-        echo "<a href='{$url}/destroy/' class='btn btn-sm btn-danger btn-delete' id='delete' data-id='{$id}'>";
+        $url = Request::root();
+        echo "<a href='{$url}/{$page}/destroy/' class='btn btn-sm btn-danger btn-delete' id='delete' data-id='{$id}'>";
         echo 	"<i class='fas fa-trash-alt'></i>&nbsp;刪除";
         echo "</a>";
     }
 
-    public static function Edit($id)
+    public static function Edit($route, $id)
     {
-        $url = URL::full();
-        echo "<a href='{$url}/edit/{$id}' class='btn btn-sm btn-success' formtarget='_blank'>";
+        $url = URL::route($route, $id);
+        echo "<a href='{$url}' class='btn btn-sm btn-success' formtarget='_blank'>";
         echo    "<i class='fas fa-pencil-alt'></i>&nbsp;編輯";
         echo "</a>";
     }
 
-    public static function Create()
+    public static function Create($route, $id)
     {
-        $url = URL::full();
-        echo "<a class='btn btn-sm btn-primary' href='{$url}/create'>";
+        $url = URL::route($route, $id);
+        echo "<a class='btn btn-sm btn-primary' href='{$url}'>";
         echo 	"<i class='fas fa-plus'></i>&nbsp;新增";
         echo "</a>";
     }

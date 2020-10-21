@@ -45,7 +45,7 @@
 
                 <div class="card-body">
                     <ul class="list-unstyled">
-                        <li>{!! $button->create() !!}</li>
+                        <li>{!! $button->create('notifications.create', request()->id) !!}</li>
                     </ul>
                     <div class="table-responsive">
                         <table class="table">
@@ -71,7 +71,7 @@
                                         <td>{{ $notification->message }}</td>
                                         <td>{{ $notification->footer }}</td>
                                         <td>{{ $notification->width }}</td>
-                                        <td>{!! $button->edit($notification->id) !!}&nbsp;{!! $button->deleting($notification->id) !!}</td>
+                                        <td>{!! $button->edit('notifications.edit', $notification->id) !!}&nbsp;{!! $button->deleting('manage/notifications', $notification->id) !!}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

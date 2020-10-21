@@ -16,6 +16,6 @@ class Notification extends Model
 
     public function channel()
     {
-        return $this->hasOne('App\Channel', 'id', 'channel_id');
+        return $this->belongsTo('App\Channel');
     }
 }

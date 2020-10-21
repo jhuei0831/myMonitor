@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li>{!! $button->GoBack(route('notifications.index')) !!}</li>
+                            <li>{!! $button->GoBack(route('notifications.index', $notification->channel->id)) !!}</li>
                         </ul>
                         @csrf
                         <div class="form-group">
